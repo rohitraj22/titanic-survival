@@ -9,7 +9,7 @@ The notebook also includes **statistical plots** and a **correlation matrix** to
 ---
 
 ## Tech Stack
-- **Python 3.x**
+- **Python**
 - **Libraries used**:
   - `pandas`, `numpy` → data manipulation
   - `matplotlib`, `seaborn` → data visualization
@@ -33,7 +33,31 @@ Key steps in the analysis:
 
 4. **Correlation Analysis**
    - Heatmap to visualize correlations between numeric variables.
+     
+5. **Family Size Analysis (New)**
+   - Multiple definitions of family size were tested:
+     - **SibSp + Parch** (direct relatives).  
+     - **Ticket Group Size** (passengers sharing the same ticket).  
+     - **LastName + Ticket (redefined)** – most accurate grouping of true families.  
+   - Clear **U-shaped survival trend** was found:
+     - **Alone travelers** → lowest survival (~30%).  
+     - **Small families (2–4)** → highest survival (~50%).  
+     - **Large families (≥5)** → very low survival (<20%).
 
+---
+
+## Visualizations
+- **Count plots** of survival by class, gender, and embarkation port.
+- **Distribution plots** of age and fare (histograms, KDE, boxplots, violin plots).
+- **QQ plots** to check normality of age and fare distributions.
+- **Correlation matrix heatmap** to identify key survival predictors.
+- **Age vs. Fare scatter plot** colored by survival status.
+- **Survival rate by SibSp + Parch** (traditional definition of family size).
+- **Distribution of Ticket Group Sizes** (passengers sharing the same ticket).
+- **Survival rate by redefined family size (LastName + Ticket)** → most accurate grouping.
+- **Survival rate by Family Category (Alone, Small, Large)** showing a clear **U-shaped survival pattern**.
+- **Correlation heatmap** comparing different family size definitions with survival.
+     
 ---
 
 ## Key Findings
@@ -43,12 +67,4 @@ Key steps in the analysis:
 - **Fare**: Higher fare strongly associated with higher survival.
 - **Age**: Children had better chances; elderly survival was low.
 - **Embarkation Port**: Passengers from Cherbourg (C) survived more compared to Southampton (S).
-
----
-
-## Visualizations
-- Count plots of survival by class, gender, and embarkation.
-- Distribution plots of age and fare (histograms, KDE, boxplots, violin plots).
-- QQ plots to check normality of age and fare distributions.
-- Correlation matrix heatmap.
-- Age vs Fare scatter plot colored by survival.
+- Alongside gender, class, and age, **family structure was a major survival determinant**.
