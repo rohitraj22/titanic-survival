@@ -33,16 +33,6 @@ Key steps in the analysis:
 
 4. **Correlation Analysis**
    - Heatmap to visualize correlations between numeric variables.
-     
-5. **Family Size Analysis (New)**
-   - Multiple definitions of family size were tested:
-     - **SibSp + Parch** (direct relatives).  
-     - **Ticket Group Size** (passengers sharing the same ticket).  
-     - **LastName + Ticket (redefined)** – most accurate grouping of true families.  
-   - Clear **U-shaped survival trend** was found:
-     - **Alone travelers** → lowest survival (~30%).  
-     - **Small families (2–4)** → highest survival (~50%).  
-     - **Large families (≥5)** → very low survival (<20%).
 
 ---
 
@@ -60,6 +50,24 @@ Key steps in the analysis:
      
 ---
 
+## Machine Learning Predictions
+After feature engineering and exploratory analysis, machine learning models were applied to predict survival:
+
+- **Features used**: Passenger class, gender, age, fare and embarkation.
+- **Preprocessing**:
+  - Missing values imputed.
+  - Categorical features encoded (**One-Hot Econding**).
+  - Numerical features scaled where necessary.
+- **Modeling**:
+  - Implied train-test-split on the training data to train the data for better accuracy.
+  - Implied **Random Forest** algorithm to train and test the datasets.
+  - Final selected model achieved **77.27% accuracy on the test data**.
+- **Interpretation**:
+  - Gender, class, and family size were the strongest predictors.
+  - The model generalizes well but leaves room for improvement (e.g., feature engineering on names, ensemble methods).
+ 
+---
+
 ## Key Findings
 - **Overall survival rate**: ~38% (342 survived out of 891).
 - **Gender**: Women survived at much higher rates than men.
@@ -67,4 +75,4 @@ Key steps in the analysis:
 - **Fare**: Higher fare strongly associated with higher survival.
 - **Age**: Children had better chances; elderly survival was low.
 - **Embarkation Port**: Passengers from Cherbourg (C) survived more compared to Southampton (S).
-- Alongside gender, class, and age, **family structure was a major survival determinant**.
+- Machine learning models reached an accuracy of **77.27%**, showing the predictive power of these engineered features.
